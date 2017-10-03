@@ -13,8 +13,21 @@ def hello(request):
     else:
         methodC['method']='这个是一一个Post处理方法'
 
-    admin = Admin(name='kumanxuan',detail='666',description='No why!')
-    admin.save()
+    #admin = Admin(name='kumanxuan',detail='666',description='No why!')
+    #admin.save()
+    #成功向数据库插入数据，现在插上提取数据。
+    res = Admin.objects.all()
+
+    list = {}
+
+    #print(res.item())
+
+    for x in res:
+        #pass
+
+        methodC['name'] = x.name
+        methodC['description'] = x.description
+    #methodC['dbInfo'] = res
 
     return render(request,'test.html',methodC)
 
