@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from testModel.models import Admin
 
 def hello(request):
 
@@ -11,6 +12,9 @@ def hello(request):
         methodC['method']='这个是一一个Get处理方法'
     else:
         methodC['method']='这个是一一个Post处理方法'
+
+    admin = Admin(name='kumanxuan',detail='666',description='No why!')
+    admin.save()
 
     return render(request,'test.html',methodC)
 
