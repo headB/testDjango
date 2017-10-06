@@ -18,17 +18,22 @@ def hello(request):
     #成功向数据库插入数据，现在插上提取数据。
     res = Admin.objects.all()
 
-    list = {}
+    listName = []
+    listDescription = []
 
     #print(res.item())
 
     for x in res:
         #pass
-
-        methodC['name'] = x.name
-        methodC['description'] = x.description
+     #for y in range(0,2):
+        listName.append(x.name)
+        listDescription.append(x.description)
     #methodC['dbInfo'] = res
 
+    #当循环储存好数值之后，就把列表的数值赋值给字典。
+    methodC['name'] = listName
+    methodC['description'] = listDescription
+    print(methodC)
     return render(request,'test.html',methodC)
 
 ##哦哦，原来这个地方的VIEW是相当于php里面的MVC结构里面的Controller啦。
